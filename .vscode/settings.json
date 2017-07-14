@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "common.h": "c",
+        "log.h": "c",
+        "sock.h": "c"
+    }
+}
