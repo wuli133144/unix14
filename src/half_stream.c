@@ -19,7 +19,7 @@ writefp=fdopen(dup(fd),"w");
 //writefp=fdopen(fd,"w");
 
 //shutdown(fileno(writefp),SHUT_WR);
-shutdown(fd,SHUT_RDWR);
+shutdown(fd,SHUT_WR);
 int i=0;
 for(i=0;i<5;i++){
 
@@ -28,8 +28,9 @@ fflush(writefp);
 //fclose(readfp);
 fgets(msg,BUFSIZE,readfp);
 fputs(msg,stdout);
-memset(msg,0,sizeof(msg));
 fflush(stdout);
+memset(msg,0,sizeof(msg));
+
 sleep(2);
 
 }
