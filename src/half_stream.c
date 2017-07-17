@@ -1,6 +1,10 @@
 
 #include"../inc/common.h"
 
+
+
+#define MIN(a,b) (((a) < (b)) ? (a) : (b))
+#define MAX(a,b) (((a) > (b)) ? (a) : (b))
 //test/dup/msg/fdopen/FILE
 #define BUFSIZE  1024
 
@@ -19,7 +23,10 @@ writefp=fdopen(dup(fd),"w");
 //writefp=fdopen(fd,"w");
 
 //shutdown(fileno(writefp),SHUT_WR);
-shutdown(fd,SHUT_WR);
+shutdown(fd,SHUT_RD);//
+
+//close(fileno(writefp));
+
 int i=0;
 for(i=0;i<5;i++){
 

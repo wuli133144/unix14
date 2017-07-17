@@ -7,6 +7,8 @@
 #include<sys/types.h>
 #include<netdb.h>
 
+#include<arpa/inet.h>
+
  
 #define LISTEN_NUM  100
 
@@ -24,7 +26,7 @@ int Socket(int domain,int type,int protocol){
 
 /*@connect start@*/
 
-int Connnect(int clientfd, struct sockaddr *addr,socklen_t len){
+int Connnect(int clientfd, struct sockaddr *addr,int len){
     int rval;
     if((rval=connect(clientfd,addr,len))<0){
         unix_error("connect");
@@ -80,8 +82,8 @@ struct addrinfo**info)
 
 
 /*@getnameinfo @*/
-int Getnameinfo(const struct sockaddr *restrict sa, socklen_t salen,
-       char *restrict node, socklen_t nodelen, char *restrict service,
+int Getnameinfo(const struct sockaddr *restrict sa, socklen_t salen, \
+       char *restrict node, socklen_t nodelen, char *restrict service, \
        socklen_t servicelen, int flags){
             int rval;
             if((rval=getnameinfo(sa,salen,node,nodelen,service,servicelen,flags))<0){
@@ -218,7 +220,7 @@ void *Malloc(size_t length){
 
 /*@Realloc  memory@*/
  
- void * Realloc(void *base,sise_t sz){
+ void * Realloc(void *base,size_t sz){
      void *ptr=NULL;
      if((ptr=realloc(base,sz))==NULL){
          unix_error("realloc error");

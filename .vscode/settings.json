@@ -2,6 +2,8 @@
     "files.associations": {
         "common.h": "c",
         "log.h": "c",
-        "sock.h": "c"
+        "sock.h": "c",
+        "net.h": "c",
+        "epoll_inc.h": "c"
     }
 }
